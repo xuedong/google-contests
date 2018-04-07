@@ -31,30 +31,30 @@ func main() {
 
 		if shoots > shield {
 			fmt.Printf("Case #%d: IMPOSSIBLE\n", testCase)
-		}
-
-		for damage > shield {
-			var idx = strings.LastIndex(instr, "CS")
-			if idx == length-2 {
-				instr = instr[:idx] + "SC"
-			} else if idx == 0 {
-				instr = "SC" + instr[(idx+2):]
-			} else if idx == -1 {
-				break
-			} else {
-				instr = instr[:idx] + "SC" + instr[(idx+2):]
-			}
-
-			var currentCharge = 1
-			for i := 0; i < idx; i++ {
-				if instr[i] == 'C' {
-					currentCharge *= 2
+		} else {
+			for damage > shield {
+				var idx = strings.LastIndex(instr, "CS")
+				if idx == length-2 {
+					instr = instr[:idx] + "SC"
+				} else if idx == 0 {
+					instr = "SC" + instr[(idx+2):]
+				} else if idx == -1 {
+					break
+				} else {
+					instr = instr[:idx] + "SC" + instr[(idx+2):]
 				}
-			}
-			damage -= currentCharge / 2
 
-			swap += 1
+				var currentCharge = 1
+				for i := 0; i < idx; i++ {
+					if instr[i] == 'C' {
+						currentCharge *= 2
+					}
+				}
+				damage -= currentCharge
+
+				swap += 1
+			}
+			fmt.Printf("Case #%d: %d\n", testCase, swap)
 		}
-		fmt.Printf("Case #%d: %d\n", testCase, swap)
 	}
 }
