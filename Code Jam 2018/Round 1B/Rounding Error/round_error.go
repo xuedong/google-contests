@@ -65,7 +65,7 @@ func main() {
 						current += int((float64(tmpList[k]+1) / float64(n)) * 100)
 					}
 
-					if current > best {
+					if current >= best {
 						best = current
 						if k == 0 {
 							tmpList[k] += 1
@@ -87,12 +87,13 @@ func main() {
 					current += int((float64(1) / float64(n)) * 100)
 				}
 
-				if current > best {
+				if current >= best {
 					best = current
 					tmpList[bestK] -= 1
 					tmpList = append(tmpList, 1)
 				}
 				total = best
+				// fmt.Println(tmpList)
 			}
 			result = best
 		}
