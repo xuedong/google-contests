@@ -113,6 +113,7 @@ func main() {
 		end := list[length-1] / gcdList[length-1]
 		gcdList[0] = begin
 		gcdList[length] = end
+		// fmt.Printf("%v\n", gcdList)
 
 		// uniqueList := unique(gcdList)
 		// copy := make([]int, 26)
@@ -144,6 +145,7 @@ func main() {
 			key, _ := mapkey(m, gcdList[i])
 			buffer.Write([]byte(key))
 		}
+		// fmt.Printf("%v\n", gcdList)
 
 		var result string
 		result = buffer.String()
