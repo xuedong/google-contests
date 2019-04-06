@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
-	"strings"
 )
 
 func main() {
@@ -14,17 +14,18 @@ func main() {
 		var lydiaPath string
 		fmt.Scan(&length, &lydiaPath)
 
-		myPath := strings.Builder{}
+		var myPath bytes.Buffer
 
 		for i := 0; i < 2*length-2; i++ {
 			if lydiaPath[i] == 'E' {
-				myPath.WriteString("S")
+				myPath.Write([]byte("S"))
 			} else {
-				myPath.WriteString("E")
+				myPath.Write([]byte("E"))
 			}
 		}
 
-		result := myPath.String()
+		var result string
+		result = myPath.String()
 		fmt.Printf("Case #%d: %s\n", testCase, result)
 	}
 }
