@@ -4,7 +4,8 @@ import (
 	"fmt"
 )
 
-func contains(s []string, e string) bool {
+//Contains tests if a string is included in another
+func Contains(s []string, e string) bool {
 	for _, a := range s {
 		if a == e {
 			return true
@@ -40,14 +41,14 @@ func main() {
 				col[i] = string(list[i][j])
 			}
 			for k := 0; k < 26; k++ {
-				if contains(col, string(k+65)) {
-					numLetters[j] += 1
+				if Contains(col, string(k+65)) {
+					numLetters[j]++
 					colStrings[j] += string(k + 65)
 				}
 			}
 			// fmt.Printf(colStrings[j] + "\n")
 		}
-		var numWays int = 1
+		var numWays = 1
 		for j := 0; j < l; j++ {
 			numWays *= numLetters[j]
 		}
@@ -56,10 +57,10 @@ func main() {
 		if l == 1 {
 			fmt.Printf("Case #%d: -\n", testCase)
 		} else if l == 2 {
-			var ok bool = false
+			var ok = false
 			for l1 := 0; l1 < len(colStrings[0]); l1++ {
 				for l2 := 0; l2 < len(colStrings[1]); l2++ {
-					if contains(list, string(colStrings[0][l1])+string(colStrings[1][l2])) == false {
+					if Contains(list, string(colStrings[0][l1])+string(colStrings[1][l2])) == false {
 						ok = true
 						fmt.Printf("Case #%d: %s\n", testCase, string(colStrings[0][l1])+string(colStrings[1][l2]))
 						break

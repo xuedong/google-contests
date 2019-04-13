@@ -4,9 +4,10 @@ import (
 	"fmt"
 )
 
-func min(array []int) (int, int) {
-	var ind int = 0
-	var min int = array[0]
+// Min returns the value and the index of the minimum element of a list
+func Min(array []int) (int, int) {
+	var ind = 0
+	var min = array[0]
 	for index, value := range array {
 		if min > value {
 			min = value
@@ -16,7 +17,8 @@ func min(array []int) (int, int) {
 	return min, ind
 }
 
-func remove(slice []int, s int) []int {
+// Remove removs an element from an int slice
+func Remove(slice []int, s int) []int {
 	return append(slice[:s], slice[s+1:]...)
 }
 
@@ -48,7 +50,7 @@ func main() {
 				list := make([]int, d)
 				for i := 0; i < d; i++ {
 					fmt.Scan(&list[i])
-					count[list[i]] += 1
+					count[list[i]]++
 				}
 				// fmt.Scan("\n")
 				if d == 1 {
@@ -63,8 +65,8 @@ func main() {
 					for i := 0; i < d; i++ {
 						customer[i] = count[list[i]]
 					}
-					var m int = customer[0]
-					var index int = 0
+					var m = customer[0]
+					var index = 0
 					for ind, e := range customer {
 						if e < m {
 							m = e
