@@ -72,10 +72,12 @@ func main() {
 				for possible == true {
 					occupied = append(occupied, current)
 					y := current % col
+					x := current / col
 					if y == 0 {
 						y = col
+					} else {
+						x++
 					}
-					x := current/col + 1
 					_, availableMoves := Count(row, col, x, y, occupied)
 					if len(availableMoves) == 0 {
 						possible = false
@@ -89,10 +91,12 @@ func main() {
 				if pathLength == length-1 {
 					for i := 0; i < length; i++ {
 						y := path[i] % col
+						x := path[i] / col
 						if y == 0 {
 							y = col
+						} else {
+							x++
 						}
-						x := path[i]/col + 1
 						fmt.Printf("%d %d\n", x, y)
 					}
 					found = true
