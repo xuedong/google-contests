@@ -6,7 +6,8 @@ import (
 	"sort"
 )
 
-func mapkey(m map[string]int, value int) (key string, ok bool) {
+// Mapkey finds the key for a given value
+func Mapkey(m map[string]int, value int) (key string, ok bool) {
 	for k, v := range m {
 		if v == value {
 			key = k
@@ -17,7 +18,8 @@ func mapkey(m map[string]int, value int) (key string, ok bool) {
 	return
 }
 
-func unique(input []int) []int {
+// Unique returns an int array without duplicates
+func Unique(input []int) []int {
 	u := make([]int, 0, len(input))
 	m := make(map[int]bool)
 
@@ -78,7 +80,8 @@ func unique(input []int) []int {
 // 	return u << shift
 // }
 
-func gcd(a int, b int) int {
+// MyGCD is my GCD computing function
+func MyGCD(a int, b int) int {
 	for a != b {
 		if a > b {
 			a = a - b
@@ -106,7 +109,7 @@ func main() {
 
 		gcdList := make([]int, length+1)
 		for i := 1; i < length; i++ {
-			gcdList[i] = gcd(list[i-1], list[i])
+			gcdList[i] = MyGCD(list[i-1], list[i])
 		}
 
 		begin := list[0] / gcdList[1]
@@ -130,7 +133,7 @@ func main() {
 			copy[i] = gcdList[i]
 		}
 		sort.Ints(copy)
-		uniqueList := unique(copy)
+		uniqueList := Unique(copy)
 		// fmt.Printf("%v\n", uniqueList)
 
 		var m map[string]int
@@ -142,7 +145,7 @@ func main() {
 
 		var buffer bytes.Buffer
 		for i := 0; i < length+1; i++ {
-			key, _ := mapkey(m, gcdList[i])
+			key, _ := Mapkey(m, gcdList[i])
 			buffer.Write([]byte(key))
 		}
 		// fmt.Printf("%v\n", gcdList)
