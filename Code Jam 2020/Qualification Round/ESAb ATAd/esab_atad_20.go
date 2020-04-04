@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func main10() {
+func main() {
 	var testCases int
 	var B int
 	fmt.Scanln(&testCases, &B)
