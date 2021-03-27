@@ -3,6 +3,9 @@
 import sys
 
 def reversort_c(n, c):
+    '''
+    There is unknown issue in this version.
+    '''
     if c < n-1:
         return None
     if c > (n+2)*(n-1)//2:
@@ -50,5 +53,4 @@ if __name__ == '__main__':
             for i in ans:
                 print(i, end=" ")
             print()
-
 
